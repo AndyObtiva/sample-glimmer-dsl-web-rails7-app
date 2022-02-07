@@ -48,6 +48,14 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'opal', '1.4.1'
+gem 'opal-rails', '2.0.2'
+gem 'opal-async', '~> 1.4.0'
+gem 'opal-jquery', '~> 0.4.6'
+gem 'glimmer-dsl-opal', '~> 0.28.3'
+gem 'glimmer-dsl-xml', '~> 1.2.0', require: false
+gem 'glimmer-dsl-css', '~> 1.2.0', require: false
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
