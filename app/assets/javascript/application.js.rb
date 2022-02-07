@@ -1,12 +1,16 @@
-require "opal"
+require 'glimmer-dsl-opal' # brings opal and other dependencies automatically
 
-# Uncomment the following to print out you're hello-world with Opal:
-#
-#   puts "hello world!"
-#
-# The following will append a hello-world to your <body> element:
-#
-#   require "native"
-#   $$[:document].addEventListener :DOMContentLoaded do
-#     $$[:document][:body][:innerHTML] += '<h2>Hello World!</h2>'
-#   end
+# Add more require-statements or Glimmer GUI DSL code
+
+include Glimmer
+
+shell {
+  fill_layout
+  text 'Example to confirm setup is working'
+  
+  label {
+    text "Welcome to Glimmer DSL for Opal!"
+    foreground :red
+    font height: 24
+  }
+}.open

@@ -52,9 +52,9 @@ gem 'opal', '1.4.1'
 gem 'opal-rails', '2.0.2'
 gem 'opal-async', '~> 1.4.0'
 gem 'opal-jquery', '~> 0.4.6'
-gem 'glimmer-dsl-opal', '~> 0.28.3'
-gem 'glimmer-dsl-xml', '~> 1.2.0', require: false
-gem 'glimmer-dsl-css', '~> 1.2.0', require: false
+gem 'glimmer-dsl-opal', '~> 0.28.4' #, path: '../glimmer-dsl-opal'
+gem 'glimmer-dsl-xml', '~> 1.3.1', require: false
+gem 'glimmer-dsl-css', '~> 1.2.1', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
