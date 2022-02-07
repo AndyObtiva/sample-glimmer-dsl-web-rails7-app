@@ -1,0 +1,17 @@
+<%= form_with(model: welcome) do |form| %>
+  <% if welcome.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(welcome.errors.count, "error") %> prohibited this welcome from being saved:</h2>
+
+      <ul>
+        <% welcome.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
