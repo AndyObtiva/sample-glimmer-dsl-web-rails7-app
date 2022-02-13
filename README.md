@@ -12,7 +12,13 @@ This is a standard Rails app. As such, you may setup locally by cloning the repo
 
 You should see all samples listed by default.
 
-![Sample Screenshot](sample-glimmer-dsl-opal-rails7-app.png)
+[![Sample Screenshot](sample-glimmer-dsl-opal-rails7-app.png)](https://sample-glimmer-dsl-opal-rails7.herokuapp.com/)
+
+## Hosted Website
+
+You may check out a hosted website on Heroku at:
+
+https://sample-glimmer-dsl-opal-rails7.herokuapp.com/
 
 ## License
 
