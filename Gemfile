@@ -9,8 +9,14 @@ gem "rails", "~> 7.0.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+group :production do
+  gem 'pg', '> 0'
+end
+
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+group :development do
+  gem "sqlite3", "~> 1.4"
+end
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -52,9 +58,11 @@ gem 'opal', '1.4.1'
 gem 'opal-rails', '2.0.2'
 gem 'opal-async', '~> 1.4.0'
 gem 'opal-jquery', '~> 0.4.6'
-gem 'glimmer-dsl-opal', '~> 0.28.4' #, path: '../glimmer-dsl-opal'
+gem 'glimmer-dsl-opal', '~> 0.29.0'
 gem 'glimmer-dsl-xml', '~> 1.3.1', require: false
 gem 'glimmer-dsl-css', '~> 1.2.1', require: false
+
+gem 'puts_debuggerer', '~> 0.13.3' # (Optional)
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
