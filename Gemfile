@@ -58,7 +58,7 @@ gem 'opal', '1.4.1'
 gem 'opal-rails', '2.0.2'
 gem 'opal-async', '~> 1.4.0'
 gem 'opal-jquery', '~> 0.4.6'
-gem 'glimmer-dsl-web', '~> 0.0.1'
+gem 'glimmer-dsl-web', '~> 0.0.2'
 gem 'glimmer-dsl-xml', '~> 1.3.2', require: false
 gem 'glimmer-dsl-css', '~> 1.2.2', require: false
 
