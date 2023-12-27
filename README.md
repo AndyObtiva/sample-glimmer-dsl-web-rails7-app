@@ -1,7 +1,7 @@
-# Sample Glimmer DSL for Opal Rails 7 App
-## [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=40 /> Glimmer Application](https://github.com/AndyObtiva/glimmer-dsl-opal)
+# Sample Glimmer DSL for Web Rails 7 App
+## [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=40 /> Glimmer DSL for Web Application](https://github.com/AndyObtiva/glimmer-dsl-web)
 
-This is a sample app built with [Glimmer DSL for Opal](https://github.com/AndyObtiva/glimmer-dsl-opal), an experimental proof-of-concept web GUI adaptor for [Glimmer](https://github.com/AndyObtiva/glimmer) desktop app samples (i.e. samples found in [Glimmer DSL for SWT](https://github.com/AndyObtiva/glimmer-dsl-swt)). It webifies them via [Rails](https://rubyonrails.org/) and [Opal](https://opalrb.com/), allowing [Glimmer](https://github.com/AndyObtiva/glimmer) desktop app samples to run on the web without changing a line of code.
+This is a sample app built with [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) (Ruby in the Browser Web GUI Library).
 
 ## Setup Instructions
 
@@ -12,19 +12,13 @@ This is a standard Rails app. As such, you may setup locally by cloning the repo
 
 You should see all samples listed by default.
 
-[![Sample Screenshot](sample-glimmer-dsl-opal-rails7-app.png)](https://sample-glimmer-dsl-opal-rails7.herokuapp.com/)
-
-## Hosted Website
-
-You may check out a hosted website on Heroku at:
-
-https://sample-glimmer-dsl-opal-rails7.herokuapp.com/
+![Sample Screenshot](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-web/master/images/glimmer-dsl-web-setup-example-working.png)
 
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2022 Andy Maleh. See [LICENSE.txt](LICENSE.txt) for further details.
+Copyright (c) 2023 Andy Maleh. See [LICENSE.txt](LICENSE.txt) for further details.
 
 --
 
