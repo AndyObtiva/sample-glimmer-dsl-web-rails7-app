@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount Glimmer::Engine => "/glimmer" # add on top
+  # TODO enable Rails Engine when ready in glimmer-dsl-web
+#   mount Glimmer::Engine => "/glimmer" # add on top
   resources :welcomes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

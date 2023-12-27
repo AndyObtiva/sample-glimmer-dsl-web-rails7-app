@@ -11,6 +11,6 @@ Rails.application.config.assets.version = "1.0"
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-Opal.use_gem 'glimmer-dsl-opal'
+Opal.use_gem 'glimmer-dsl-web'
 
 Opal.use_gem 'puts_debuggerer' # (Optional)
