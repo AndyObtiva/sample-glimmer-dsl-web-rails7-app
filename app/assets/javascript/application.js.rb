@@ -1,7 +1,8 @@
 require 'glimmer-dsl-web'
 
-# Enable this and disable everything that follows if you want to load the Hello, World! sample
+# To load a sample, enable one of the following lines and disable everything that follows
 # require 'glimmer-dsl-web/samples/hello/hello_world.rb'
+# require 'glimmer-dsl-web/samples/hello/hello_button.rb'
 
 require 'puts_debuggerer'
 

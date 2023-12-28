@@ -10,7 +10,7 @@ This is a standard Rails app. As such, you may setup locally by cloning the repo
 - `rails db:migrate`
 - `rails s`
 
-You should see all samples listed by default.
+You should see Hello, World! by default. You can edit `app/assets/javascript/application.js.rb` to enable different samples by following the instructions in comments.
 
 ![Sample Screenshot](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-web/master/images/glimmer-dsl-web-setup-example-working.png)
 

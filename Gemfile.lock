@@ -98,7 +98,7 @@ GEM
       facets (>= 3.1.0, < 4.0.0)
     glimmer-dsl-css (1.2.2)
       glimmer (>= 2.0.0, < 3.0.0)
-    glimmer-dsl-web (0.0.2)
+    glimmer-dsl-web (0.0.3)
       glimmer (~> 2.4.1)
       glimmer-dsl-css (~> 1.2.2)
       glimmer-dsl-xml (~> 1.3.2)
@@ -178,7 +178,7 @@ GEM
     pure-struct (1.0.2)
     puts_debuggerer (0.13.3)
       awesome_print (~> 1.9.2)
-    racc (1.6.0)
+    racc (1.7.3)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -263,7 +263,7 @@ DEPENDENCIES
   capybara
   debug
   glimmer-dsl-css (~> 1.2.2)
-  glimmer-dsl-web (~> 0.0.2)
+  glimmer-dsl-web (~> 0.0.3)
   glimmer-dsl-xml (~> 1.3.2)
   importmap-rails
   jbuilder
