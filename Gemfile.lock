@@ -98,7 +98,7 @@ GEM
       facets (>= 3.1.0, < 4.0.0)
     glimmer-dsl-css (1.2.2)
       glimmer (>= 2.0.0, < 3.0.0)
-    glimmer-dsl-web (0.0.3)
+    glimmer-dsl-web (0.0.4)
       glimmer (~> 2.4.1)
       glimmer-dsl-css (~> 1.2.2)
       glimmer-dsl-xml (~> 1.3.2)
@@ -263,7 +263,7 @@ DEPENDENCIES
   capybara
   debug
   glimmer-dsl-css (~> 1.2.2)
-  glimmer-dsl-web (~> 0.0.3)
+  glimmer-dsl-web (~> 0.0.4)
   glimmer-dsl-xml (~> 1.3.2)
   importmap-rails
   jbuilder
