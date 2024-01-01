@@ -12,9 +12,11 @@ This is a standard Rails app. As such, you may setup locally by cloning the repo
 - `rails db:migrate`
 - `rails s`
 
-You should see Hello, World! by default. You can edit `app/assets/javascript/application.js.rb` to enable different samples by following the instructions in comments.
+You should see a Sample Selector app by default, which is written in Ruby using [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) in this file:
 
-![Sample Screenshot](https://raw.githubusercontent.com/AndyObtiva/glimmer-dsl-web/master/images/glimmer-dsl-web-setup-example-working.png)
+[app/assets/javascript/application.js.rb](/app/assets/javascript/application.js.rb)
+
+![Sample Screenshot](/sample-glimmer-dsl-web-rails7-app.png)
 
 ## License
 
