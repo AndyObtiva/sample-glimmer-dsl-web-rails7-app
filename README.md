@@ -20,9 +20,9 @@ You should see a Sample Selector app by default, which is written in Ruby using 
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](LICENSE.txt)
 
-Copyright (c) 2023 Andy Maleh. See [LICENSE.txt](LICENSE.txt) for further details.
+Copyright (c) 2023-2024 Andy Maleh. See [LICENSE.txt](LICENSE.txt) for further details.
 
 --
 
