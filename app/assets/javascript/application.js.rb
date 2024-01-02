@@ -6,7 +6,7 @@ Document.ready? do
   @root_div = div(id: 'root-container') {
     h1('Glimmer DSL for Web Rails 7 Sample App')
     
-    h2('Run a sample or view its code. Refresh page to load another sample.')
+    h2('Run a sample or view its code. Refresh page to run another sample.')
     
     table(id: 'samples') {
       tr {
