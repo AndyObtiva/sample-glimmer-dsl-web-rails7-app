@@ -90,6 +90,26 @@ Document.ready? do
       }
       
       tr {
+        td('Hello, Content Data-Binding!')
+        td {
+          span(' ( ')
+          a('Run', href: '#') {
+            onclick do |event|
+              event.prevent_default
+              @root_div.remove
+              require 'glimmer-dsl-web/samples/hello/hello_content_data_binding.rb'
+            end
+          }
+          span(' | ')
+          a('Code',
+            target: '_blank',
+            href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_content_data_binding.rb'
+          )
+          span(' ) ')
+        }
+      }
+      
+      tr {
         td('Hello, Input (Date/Time)!')
         td {
           span(' ( ')
