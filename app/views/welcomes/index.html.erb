@@ -1,1 +1,16 @@
-<div id="app-container"></div>
+<h1 style="text-align: center;">Glimmer DSL for Web Rails 7 Sample App</h1>
+
+<% if params[:address] == 'true' %>
+  <!-- This sample demonstrates use of glimmer_component helper with arguments -->
+  <%= glimmer_component('address_form',
+        full_name: params[:full_name],
+        street: params[:street],
+        street2: params[:street2],
+        city: params[:city],
+        state: params[:state],
+        zip_code: params[:zip_code]
+      )
+   %>
+<% else %>
+  <%= glimmer_component('sample_selector') %>
+<% end %>

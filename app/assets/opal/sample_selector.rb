@@ -1,14 +1,12 @@
 require 'glimmer-dsl-web'
 
-require_relative 'back_anchor'
+require_relative 'sample_selector/views/back_anchor'
 
 class SampleSelector
   include Glimmer::Web::Component
   
   markup {
     div(id: 'root-container') {
-      h1('Glimmer DSL for Web Rails 7 Sample App')
-      
       h2("Run a sample or view a sample's code.")
       
       table(id: 'samples') {
@@ -157,6 +155,20 @@ class SampleSelector
             a('Code',
               target: '_blank',
               href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_component.rb'
+            )
+            span(' ) ')
+          }
+        }
+        
+        tr {
+          td('Hello, Glimmer Component Helper!')
+          td {
+            span(' ( ')
+            a('Run', href: '/?address=true&full_name=John%20Doe&street=123%20Main%20St&street2=apt%2012&city=San%20Diego&state=California&zip_code=91911')
+            span(' | ')
+            a('Code',
+              target: '_blank',
+              href: 'https://github.com/AndyObtiva/sample-glimmer-dsl-web-rails7-app/blob/master/app/views/welcomes/index.html.erb'
             )
             span(' ) ')
           }
