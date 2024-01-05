@@ -56,7 +56,7 @@ gem "bootsnap", require: false
 
 gem 'puts_debuggerer', '~> 0.13.3' # (Optional)
 
-gem 'glimmer-dsl-web', '~> 0.0.8'
+gem 'glimmer-dsl-web', '~> 0.0.9' #, path: '../glimmer-dsl-web'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
