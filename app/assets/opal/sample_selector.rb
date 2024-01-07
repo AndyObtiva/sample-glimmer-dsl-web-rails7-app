@@ -86,6 +86,31 @@ class SampleSelector
         }
         
         tr {
+          td('Hello, Observer!')
+          td {
+            span(' ( ')
+            a('Run', href: '#') {
+              onclick do |event|
+                event.prevent_default
+                markup_root.remove
+                BackAnchor.render
+                begin
+                  load 'glimmer-dsl-web/samples/hello/hello_observer.rb'
+                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+                  require 'glimmer-dsl-web/samples/hello/hello_observer.rb'
+                end
+              end
+            }
+            span(' | ')
+            a('Code',
+              target: '_blank',
+              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_observer.rb'
+            )
+            span(' ) ')
+          }
+        }
+        
+        tr {
           td('Hello, Data-Binding!')
           td {
             span(' ( ')
@@ -161,7 +186,7 @@ class SampleSelector
         }
         
         tr {
-          td('Hello, Glimmer Component Helper!')
+          td('Hello, glimmer_component Rails Helper!')
           td {
             span(' ( ')
             a('Run', href: '/?address=true&full_name=John%20Doe&street=123%20Main%20St&street2=apt%2012&city=San%20Diego&state=California&zip_code=91911')
@@ -169,6 +194,31 @@ class SampleSelector
             a('Code',
               target: '_blank',
               href: 'https://github.com/AndyObtiva/sample-glimmer-dsl-web-rails7-app/blob/master/app/views/welcomes/index.html.erb'
+            )
+            span(' ) ')
+          }
+        }
+        
+        tr {
+          td('Hello, Paragraph!')
+          td {
+            span(' ( ')
+            a('Run', href: '#') {
+              onclick do |event|
+                event.prevent_default
+                markup_root.remove
+                BackAnchor.render
+                begin
+                  load 'glimmer-dsl-web/samples/hello/hello_paragraph.rb'
+                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+                  require 'glimmer-dsl-web/samples/hello/hello_paragraph.rb'
+                end
+              end
+            }
+            span(' | ')
+            a('Code',
+              target: '_blank',
+              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_paragraph.rb',
             )
             span(' ) ')
           }
@@ -194,6 +244,31 @@ class SampleSelector
             a('Code',
               target: '_blank',
               href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_input_date_time.rb',
+            )
+            span(' ) ')
+          }
+        }
+        
+        tr {
+          td('Button Counter')
+          td {
+            span(' ( ')
+            a('Run', href: '#') {
+              onclick do |event|
+                event.prevent_default
+                markup_root.remove
+                BackAnchor.render
+                begin
+                  load 'glimmer-dsl-web/samples/regular/button_counter.rb'
+                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+                  require 'glimmer-dsl-web/samples/regular/button_counter.rb'
+                end
+              end
+            }
+            span(' | ')
+            a('Code',
+              target: '_blank',
+              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/regular/button_counter.rb',
             )
             span(' ) ')
           }

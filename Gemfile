@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.2"
+ruby "3.2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
@@ -56,7 +56,7 @@ gem "bootsnap", require: false
 
 gem 'puts_debuggerer', '~> 0.13.3' # (Optional)
 
-gem 'glimmer-dsl-web', '~> 0.0.10' #, path: '../glimmer-dsl-web'
+gem 'glimmer-dsl-web', '~> 0.0.12' #, path: '../glimmer-dsl-web'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,0 +1,17 @@
+<div id="address-container">
+  <h1>Shipping Address </h1>
+  <legend>Please enter your shipping address information (Zip Code must be a valid 5 digit number)</legend>
+  <!-- This sample demonstrates use of glimmer_component helper with arguments -->
+  <%= glimmer_component('address_form',
+        full_name: params[:full_name],
+        street: params[:street],
+        street2: params[:street2],
+        city: params[:city],
+        state: params[:state],
+        zip_code: params[:zip_code]
+      )
+   %>
+   <div>
+     <a href="/">&lt;&lt; Back Home</a>
+   </div>
+</div>
