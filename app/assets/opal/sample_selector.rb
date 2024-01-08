@@ -1,13 +1,3 @@
-# Below is how we load the Sample Selector without using the glimmer_component Rails helper
-# If you want to try to enable, make sure to disable glimmer_component call in app/views/welcomes/index.html.erb
-# Also, enable <%#= javascript_include_tag "application", "data-turbolinks-track": "reload" %> in application.html.erb layout
-#
-# require_relative 'sample_selector'
-#
-# Document.ready? do
-#   SampleSelector.render
-# end
-
 require 'glimmer-dsl-web'
 
 require_relative 'sample_selector/views/back_anchor'
@@ -199,7 +189,7 @@ class SampleSelector
           td('Hello, glimmer_component Rails Helper!')
           td {
             span(' ( ')
-            a('Run', href: '/?address=true&full_name=John%20Doe&street=123%20Main%20St&street2=apt%2012&city=San%20Diego&state=California&zip_code=91911')
+            a('Run', "data-turbo": "false", href: '/?address=true&full_name=John%20Doe&street=123%20Main%20St&street2=apt%2012&city=San%20Diego&state=California&zip_code=91911')
             span(' | ')
             a('Code',
               target: '_blank',
