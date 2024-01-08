@@ -274,19 +274,17 @@ class SampleSelector
           }
         }
       }
-  
+      
       style {
-        <<~CSS
-          div#root-container {
-            text-align: center;
-          }
-          table#samples {
-            margin: 0 auto;
-          }
-          table tr td {
-            text-align: left;
-          }
-        CSS
+        r('div#root-container') {
+          text_align 'center'
+        }
+        r('table#samples') {
+          margin '0 auto'
+        }
+        r('table tr td') {
+          text_align 'left'
+        }
       }
     }
   }
