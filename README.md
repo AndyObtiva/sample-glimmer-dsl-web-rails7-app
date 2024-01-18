@@ -12,11 +12,23 @@ This is a standard Rails app. As such, you may setup locally by cloning the repo
 - `rails db:migrate`
 - `rails s`
 
-You should see a Sample Selector app by default, which is written in Ruby using [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) in this file:
-
-[app/assets/javascript/application.js.rb](/app/assets/javascript/application.js.rb)
+Visit localhost:3000 in the web browser and You should see a Sample Selector app. 
 
 ![Sample Screenshot](/sample-glimmer-dsl-web-rails7-app.png)
+
+The Sample Selector Single-Page Application Frontend is written in Ruby using [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) in this file:
+
+[app/assets/opal/sample_selector.rb](/app/assets/opal/sample_selector.rb)
+
+It is loaded from an ERB View using the `glimmer_component` Rails helper:
+
+[app/views/welcomes/index.html.erb](/app/views/welcomes/index.html.erb)
+
+Note that if you are upgrading your setup by pulling a newer commit of this project and re-running `bundle` (or `bundle update`), then before running `rails s`, you should also clear the Opal cache as follows (or else you would get an error about missing files from older versions of gems):
+
+```
+rm -rf tmp/cache
+```
 
 ## License
 
