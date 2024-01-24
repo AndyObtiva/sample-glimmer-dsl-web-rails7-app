@@ -170,7 +170,6 @@ GEM
     parser (3.3.0.4)
       ast (~> 2.4.1)
       racc
-    pg (1.5.4)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -273,7 +272,6 @@ DEPENDENCIES
   glimmer-dsl-web (~> 0.2.3)
   importmap-rails
   jbuilder
-  pg (> 0)
   puma (~> 5.0)
   puts_debuggerer (~> 0.13.3)
   rails (~> 7.0.1)

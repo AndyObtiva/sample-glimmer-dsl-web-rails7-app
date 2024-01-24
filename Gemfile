@@ -9,9 +9,10 @@ gem "rails", "~> 7.0.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-group :production do
-  gem 'pg', '> 0'
-end
+# Enable if you want to use PostgreSQL in Production
+# group :production do
+#   gem 'pg', '> 0'
+# end
 
 # Use sqlite3 as the database for Active Record
 group :development do
