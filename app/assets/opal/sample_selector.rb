@@ -26,6 +26,7 @@ class SampleSelector
                               after_read: -> (_) {
                                 code_element.dom_element.removeAttr('data-highlighted')
                                 $$.hljs.highlightAll
+                                $$.hljs.initLineNumbersOnLoad
                               }
                             ]
             }
@@ -97,6 +98,13 @@ class SampleSelector
         
         r('table#samples tr.selected') {
           background 'lightblue'
+        }
+        
+        r('.hljs-ln td.hljs-ln-line.hljs-ln-numbers') {
+          user_select 'none'
+          text_align 'center'
+          color 'rgb(101, 109, 118)'
+          padding '3px 30px'
         }
       }
     }
