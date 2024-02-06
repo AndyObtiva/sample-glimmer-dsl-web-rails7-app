@@ -42,34 +42,19 @@ class SampleSelector
                           ]
           
             td(SampleSelectorPresenter::SAMPLE_NAMES[sample])
-            td {
-              span(' ( ')
-              a('Run', href: '#') {
-                onclick do |event|
-                  event.prevent_default
-                  markup_root.remove
-                  BackAnchor.render
-                  @presenter.load_sample(sample)
-                  # TODO add this link as a button on top of the table
-                end
-              }
-              span(' | ')
-              a('Code', href: '#') {
-                onclick do |event|
-                  event.prevent_default
-                  @presenter.selected_sample = sample
-                end
-              }
-              span(' ) ')
-            }
+            
+            onclick do |event|
+              event.prevent_default
+              @presenter.selected_sample = sample
+            end
           }
         end
         
         tr {
           # TODO data-bind selection
           # handle links differently, trying to do so with presenter
-          td('Hello, glimmer_component Rails Helper!')
           td {
+            span('Hello, glimmer_component Rails Helper!')
             span(' ( ')
             a('Run', "data-turbo": "false", href: '/?address=true&full_name=John%20Doe&street=123%20Main%20St&street2=apt%2012&city=San%20Diego&state=California&zip_code=91911')
             span(' | ')
@@ -80,6 +65,15 @@ class SampleSelector
             span(' ) ')
           }
         }
+      }
+      
+      button('Run', style: 'margin: 15px 0; padding: 10px; font-size: 1.3em;') {
+        onclick do |event|
+          event.prevent_default
+          markup_root.remove
+          BackAnchor.render
+          @presenter.load_sample(@presenter.selected_sample)
+        end
       }
                   
       style {
@@ -96,7 +90,21 @@ class SampleSelector
           margin '0'
         }
         
-        r('table#samples tr.selected') {
+        r('table#samples') {
+          border_spacing 0
+        }
+        
+        r('table#samples tr td') {
+          border '1px solid transparent'
+          padding '5px'
+        }
+        
+        r('table#samples tr td:hover') {
+          border '1px solid gray'
+        }
+        
+        r('table#samples tr.selected td') {
+          border '1px solid lightgray'
           background 'lightblue'
         }
         
