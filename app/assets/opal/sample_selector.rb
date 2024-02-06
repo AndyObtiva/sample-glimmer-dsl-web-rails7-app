@@ -1,191 +1,72 @@
 require 'glimmer-dsl-web'
 
+require_relative 'sample_selector/models/sample_selector_presenter'
 require_relative 'sample_selector/views/back_anchor'
 
 class SampleSelector
   include Glimmer::Web::Component
   
+  before_render do
+    @presenter = SampleSelectorPresenter.new
+  end
+  
+  after_render do
+    @presenter.selected_sample = 'hello_world'
+  end
+  
   markup {
     div(id: 'root-container') {
-      h2("Run a sample or view a sample's code.")
+      h2("Run a sample or view a sample's code.", style: 'text-align: center;')
+      
+      div(id: 'code-scrollable-container') {
+        div(id: 'code-container') {
+          pre {
+            code(class: "language-ruby") { |code_element|
+              inner_html <= [@presenter, :selected_sample_code,
+                              after_read: -> (_) {
+                                code_element.dom_element.removeAttr('data-highlighted')
+                                $$.hljs.highlightAll
+                              }
+                            ]
+            }
+          }
+        }
+      }
       
       table(id: 'samples') {
-        tr {
-          td('Hello, World!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_world.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_world.rb'
+        SampleSelectorPresenter::SAMPLES.each do |sample|
+          tr {
+            class_name <= [@presenter, :selected_sample,
+                            on_read: -> (val) { val == sample ? 'selected' : ''}
+                          ]
+          
+            td(SampleSelectorPresenter::SAMPLE_NAMES[sample])
+            td {
+              span(' ( ')
+              a('Run', href: '#') {
+                onclick do |event|
+                  event.prevent_default
+                  markup_root.remove
+                  BackAnchor.render
+                  @presenter.load_sample(sample)
+                  # TODO add this link as a button on top of the table
                 end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_world.rb'
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
-          td('Hello, Button!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_button.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_button.rb'
+              }
+              span(' | ')
+              a('Code', href: '#') {
+                onclick do |event|
+                  event.prevent_default
+                  @presenter.selected_sample = sample
                 end
-              end
+              }
+              span(' ) ')
             }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_button.rb'
-            )
-            span(' ) ')
           }
-        }
-
+        end
+        
         tr {
-          td('Hello, Form!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_form.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_form.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_form.rb'
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
-          td('Hello, Observer!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_observer.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_observer.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_observer.rb'
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
-          td('Hello, Data-Binding!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_data_binding.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_data_binding.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_data_binding.rb'
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
-          td('Hello, Content Data-Binding!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_content_data_binding.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_content_data_binding.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_content_data_binding.rb'
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
-          td('Hello, Component!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_component.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_component.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_component.rb'
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
+          # TODO data-bind selection
+          # handle links differently, trying to do so with presenter
           td('Hello, glimmer_component Rails Helper!')
           td {
             span(' ( ')
@@ -198,92 +79,24 @@ class SampleSelector
             span(' ) ')
           }
         }
-
-        tr {
-          td('Hello, Paragraph!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_paragraph.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_paragraph.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_paragraph.rb',
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
-          td('Hello, Input (Date/Time)!')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/hello/hello_input_date_time.rb',
-            )
-            span(' ) ')
-          }
-        }
-
-        tr {
-          td('Button Counter')
-          td {
-            span(' ( ')
-            a('Run', href: '#') {
-              onclick do |event|
-                event.prevent_default
-                markup_root.remove
-                BackAnchor.render
-                begin
-                  load 'glimmer-dsl-web/samples/regular/button_counter.rb'
-                rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
-                  require 'glimmer-dsl-web/samples/regular/button_counter.rb'
-                end
-              end
-            }
-            span(' | ')
-            a('Code',
-              target: '_blank',
-              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/lib/glimmer-dsl-web/samples/regular/button_counter.rb',
-            )
-            span(' ) ')
-          }
-        }
       }
-      
+                  
       style {
-        r('div#root-container') {
-          text_align 'center'
+        r('div#code-scrollable-container') {
+          float 'right'
+          overflow 'scroll'
+          width 'calc(100vw - 410px)'
+          height '80vh'
+          border '1px solid rgb(209, 215, 222)'
+          padding '0'
         }
-        r('table#samples') {
-          margin '0 auto'
+        
+        r('div#code-scrollable-container pre') {
+          margin '0'
         }
-        r('table tr td') {
-          text_align 'left'
+        
+        r('table#samples tr.selected') {
+          background 'lightblue'
         }
       }
     }
