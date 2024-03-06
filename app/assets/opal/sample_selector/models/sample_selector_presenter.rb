@@ -4,11 +4,13 @@ class SampleSelectorPresenter
     'hello_button' => 'Hello, Button!',
     'hello_form' => 'Hello, Form!',
     'hello_observer' => 'Hello, Observer!',
+    'hello_observer_data_binding' => 'Hello, Observer (Data-Binding)!',
     'hello_data_binding' => 'Hello, Data-Binding!',
     'hello_content_data_binding' => 'Hello, Content Data-Binding!',
     'hello_component' => 'Hello, Component!',
     'hello_paragraph' => 'Hello, Paragraph!',
     'hello_input_date_time' => 'Hello, Input Date/Time!',
+    'hello_form_mvp' => 'Hello, Form (MVP)!',
     'button_counter' => 'Button Counter',
   }
   
@@ -24,7 +26,7 @@ class SampleSelectorPresenter
   
   def fetch_selected_sample_code
     HTTP.get("/samples/#{selected_sample}.json") do |response|
-      code = Native(response.body)['code']
+      code = Native(response.body).code
       self.selected_sample_code = code
     end
   end
@@ -57,6 +59,12 @@ class SampleSelectorPresenter
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_observer.rb'
       end
+    when 'hello_observer_data_binding'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_observer_data_binding.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_observer_data_binding.rb'
+      end
     when 'hello_data_binding'
       begin
         load 'glimmer-dsl-web/samples/hello/hello_data_binding.rb'
@@ -86,6 +94,12 @@ class SampleSelectorPresenter
         load 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
+      end
+    when 'hello_form_mvp'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_form_mvp.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_form_mvp.rb'
       end
     when 'button_counter'
       begin
