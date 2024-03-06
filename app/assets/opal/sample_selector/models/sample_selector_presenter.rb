@@ -9,6 +9,7 @@ class SampleSelectorPresenter
     'hello_component' => 'Hello, Component!',
     'hello_paragraph' => 'Hello, Paragraph!',
     'hello_input_date_time' => 'Hello, Input Date/Time!',
+    'hello_form_mvp' => 'Hello, Form MVP!',
     'button_counter' => 'Button Counter',
   }
   
@@ -24,7 +25,7 @@ class SampleSelectorPresenter
   
   def fetch_selected_sample_code
     HTTP.get("/samples/#{selected_sample}.json") do |response|
-      code = Native(response.body)['code']
+      code = Native(response.body).code
       self.selected_sample_code = code
     end
   end
@@ -86,6 +87,12 @@ class SampleSelectorPresenter
         load 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
+      end
+    when 'hello_form_mvp'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_form_mvp.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_form_mvp.rb'
       end
     when 'button_counter'
       begin
