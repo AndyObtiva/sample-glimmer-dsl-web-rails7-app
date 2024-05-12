@@ -68,7 +68,7 @@ class SampleSelector
           event.prevent_default
           markup_root.remove
           BackAnchor.render
-          @presenter.load_sample
+          @presenter.run
         end
       }
                   

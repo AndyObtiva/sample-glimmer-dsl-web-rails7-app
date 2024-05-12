@@ -1,3 +1,4 @@
+# Sample Backend Model
 class Sample
   attr_reader :id, :file, :code
   

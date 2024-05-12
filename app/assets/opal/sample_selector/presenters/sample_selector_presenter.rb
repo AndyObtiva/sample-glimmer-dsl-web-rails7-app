@@ -26,18 +26,16 @@ class SampleSelectorPresenter
   end
   
   def selected_sample=(sample)
+    # causes selected sample to get highlighted in the View indirectly through data-binding
     @selected_sample = sample
-    fetch_selected_sample_code
-  end
-  
-  def fetch_selected_sample_code
-    HTTP.get("/samples/#{selected_sample.id}.json") do |response|
-      code = Native(response.body).code
+    
+    @selected_sample.fetch_code do |code|
+      # causes selected sample code to display in the View indirectly through data-binding
       self.selected_sample_code = code
     end
   end
   
-  def load_sample
-    selected_sample.load_sample
+  def run
+    selected_sample.run
   end
 end

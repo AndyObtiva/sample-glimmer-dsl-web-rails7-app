@@ -1,12 +1,22 @@
+require_relative 'sample_api'
+
+# Sample Frontend Model
 class Sample
-  attr_reader :id, :name
+  attr_reader :id, :name, :code
   
   def initialize(id:, name:)
     @id = id
     @name = name
   end
   
-  def load_sample
+  def fetch_code(&code_processor)
+    SampleApi.show(id) do |sample|
+      @code = sample.code
+      code_processor.call(@code)
+    end
+  end
+  
+  def run
     # We must embeded static require/load statements for Opal to pre-load them into page
     case @id
     when 'hello_world'
