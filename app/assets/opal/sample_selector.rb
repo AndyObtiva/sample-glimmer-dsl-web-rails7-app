@@ -1,6 +1,6 @@
 require 'glimmer-dsl-web'
 
-require_relative 'sample_selector/models/sample_selector_presenter'
+require_relative 'sample_selector/presenters/sample_selector_presenter'
 require_relative 'sample_selector/views/back_anchor'
 
 class SampleSelector
@@ -8,10 +8,6 @@ class SampleSelector
   
   before_render do
     @presenter = SampleSelectorPresenter.new
-  end
-  
-  after_render do
-    @presenter.selected_sample = 'hello_world'
   end
   
   markup {
@@ -41,7 +37,7 @@ class SampleSelector
                             on_read: -> (val) { val == sample ? 'selected' : ''}
                           ]
           
-            td(SampleSelectorPresenter::SAMPLE_NAMES[sample])
+            td(sample.name)
             
             onclick do |event|
               event.prevent_default
@@ -72,7 +68,7 @@ class SampleSelector
           event.prevent_default
           markup_root.remove
           BackAnchor.render
-          @presenter.load_sample(@presenter.selected_sample)
+          @presenter.load_sample
         end
       }
                   
