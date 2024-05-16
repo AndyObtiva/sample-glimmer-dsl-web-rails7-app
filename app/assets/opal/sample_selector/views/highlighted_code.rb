@@ -4,9 +4,10 @@ class HighlightedCode
   attribute :language, default: 'ruby'
   attribute :model
   attribute :model_code_attribute # name of attribute on model that holds code string to render
+  attribute :float, default: 'initial'
   
   markup {
-    div(id: 'code-scrollable-container') {
+    div(class: 'code-scrollable-container', style: "float: #{float};") {
       pre {
         @code_element = code(class: "language-#{language}") {
           inner_html <= [model, model_code_attribute,
@@ -16,8 +17,7 @@ class HighlightedCode
       }
      
       style {
-        r('div#code-scrollable-container') {
-          float 'right'
+        r('div.code-scrollable-container') {
           overflow 'scroll'
           width 'calc(100vw - 410px)'
           height '80vh'
@@ -25,7 +25,7 @@ class HighlightedCode
           padding '0'
         }
         
-        r('div#code-scrollable-container pre') {
+        r('div.code-scrollable-container pre') {
           margin '0'
         }
         
