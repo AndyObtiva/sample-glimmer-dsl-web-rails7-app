@@ -2,6 +2,7 @@ require 'glimmer-dsl-web'
 
 require_relative 'sample_selector/presenters/sample_selector_presenter'
 require_relative 'sample_selector/views/back_anchor'
+require_relative 'sample_selector/views/highlighted_code'
 
 class SampleSelector
   include Glimmer::Web::Component
@@ -14,21 +15,7 @@ class SampleSelector
     div(id: 'root-container') {
       h2("Run a sample or view a sample's code.", style: 'text-align: center;')
       
-      div(id: 'code-scrollable-container') {
-        div(id: 'code-container') {
-          pre {
-            code(class: "language-ruby") { |code_element|
-              inner_html <= [@presenter, :selected_sample_code,
-                              after_read: -> (_) {
-                                code_element.dom_element.removeAttr('data-highlighted')
-                                $$.hljs.highlightAll
-                                $$.hljs.initLineNumbersOnLoad
-                              }
-                            ]
-            }
-          }
-        }
-      }
+      highlighted_code(language: 'ruby', model: @presenter, model_code_attribute: :selected_sample_code)
       
       table(id: 'samples') {
         SampleSelectorPresenter::SAMPLES.each do |sample|
@@ -73,19 +60,6 @@ class SampleSelector
       }
                   
       style {
-        r('div#code-scrollable-container') {
-          float 'right'
-          overflow 'scroll'
-          width 'calc(100vw - 410px)'
-          height '80vh'
-          border '1px solid rgb(209, 215, 222)'
-          padding '0'
-        }
-        
-        r('div#code-scrollable-container pre') {
-          margin '0'
-        }
-        
         r('table#samples') {
           border_spacing 0
         }
@@ -102,13 +76,6 @@ class SampleSelector
         r('table#samples tr.selected td') {
           border '1px solid lightgray'
           background 'lightblue'
-        }
-        
-        r('.hljs-ln td.hljs-ln-line.hljs-ln-numbers') {
-          user_select 'none'
-          text_align 'center'
-          color 'rgb(101, 109, 118)'
-          padding '3px 30px'
         }
       }
     }
