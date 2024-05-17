@@ -12,9 +12,9 @@ This is a standard Rails app. As such, you may setup locally by cloning the repo
 - `rails db:migrate`
 - `rails s`
 
-Visit localhost:3000 in the web browser and You should see a Sample Selector app. 
+Visit localhost:3000 in the web browser and You should see a Sample Selector app.
 
-![Sample Screenshot](/sample-glimmer-dsl-web-rails7-app.png)
+![Sample Screenshot](/sample-glimmer-dsl-web-rails7-app.gif)
 
 The Sample Selector Single-Page Application Frontend is written in Ruby using [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) in this file:
 

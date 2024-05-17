@@ -41,6 +41,7 @@ class HighlightedCode
   
   def highlight_code
     @code_element.dom_element.removeAttr('data-highlighted')
+    # $$ enables interacting with global JS scope, like top-level hljs variable to use highlight.js library
     $$.hljs.highlightAll
     $$.hljs.initLineNumbersOnLoad
   end
