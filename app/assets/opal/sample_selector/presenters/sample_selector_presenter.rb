@@ -14,6 +14,7 @@ class SampleSelectorPresenter
     'hello_input_date_time' => 'Hello, Input Date/Time!',
     'hello_form_mvp' => 'Hello, Form (MVP)!',
     'button_counter' => 'Button Counter',
+    'todo_mvc' => 'Todo MVC',
   }
   
   SAMPLES = SAMPLE_NAMES.map { |id, name| Sample.new(id:, name:) }

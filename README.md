@@ -30,6 +30,8 @@ Note that if you are upgrading your setup by pulling a newer commit of this proj
 rm -rf tmp/cache
 ```
 
+![Todo MVC](https://github.com/AndyObtiva/glimmer-dsl-web/raw/master/images/glimmer-dsl-web-samples-regular-todo-mvc.gif)
+
 ## License
 
 [MIT](LICENSE.txt)

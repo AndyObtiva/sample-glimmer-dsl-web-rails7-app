@@ -91,6 +91,12 @@ class Sample
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/regular/button_counter.rb'
       end
+    when 'todo_mvc'
+      begin
+        load 'glimmer-dsl-web/samples/regular/todo_mvc.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/regular/todo_mvc.rb'
+      end
     end
   end
 end
