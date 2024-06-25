@@ -45,6 +45,7 @@ class SamplesTable
         r('table.samples tr td') {
           border '1px solid transparent'
           padding '5px'
+          cursor 'default'
         }
         
         r('table.samples tr td:hover') {

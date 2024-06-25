@@ -100,7 +100,7 @@ GEM
     glimmer-dsl-css (1.4.0)
       css_parser (>= 1.0.0, < 2.0.0)
       glimmer (>= 2.0.0, < 3.0.0)
-    glimmer-dsl-web (0.2.8)
+    glimmer-dsl-web (0.3.0)
       glimmer (~> 2.7.6)
       glimmer-dsl-css (~> 1.4.0)
       glimmer-dsl-xml (~> 1.4.0)
@@ -140,7 +140,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.24.0)
     msgpack (1.7.2)
-    net-imap (0.4.13)
+    net-imap (0.4.14)
       date
       net-protocol
     net-pop (0.1.2)
@@ -272,7 +272,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  glimmer-dsl-web (~> 0.2.8)
+  glimmer-dsl-web (~> 0.3.0)
   importmap-rails
   jbuilder
   puma (~> 5.0)
