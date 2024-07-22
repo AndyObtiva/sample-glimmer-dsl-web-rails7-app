@@ -24,7 +24,7 @@ class SampleSelector
         onclick do |event|
           event.prevent_default
           markup_root.remove
-          BackAnchor.render unless @presenter.selected_sample.id == 'todo_mvc'
+          BackAnchor.render
           @presenter.run
         end
       }

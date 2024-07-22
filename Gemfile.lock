@@ -94,15 +94,15 @@ GEM
       reline (>= 0.3.8)
     erubi (1.13.0)
     facets (3.1.0)
-    glimmer (2.7.9)
+    glimmer (2.8.0)
       array_include_methods (>= 1.4.0, < 1.6.0)
       facets (>= 3.1.0, < 4.0.0)
-    glimmer-dsl-css (1.4.0)
+    glimmer-dsl-css (1.5.0)
       css_parser (>= 1.0.0, < 2.0.0)
       glimmer (>= 2.0.0, < 3.0.0)
-    glimmer-dsl-web (0.3.2)
-      glimmer (~> 2.7.9)
-      glimmer-dsl-css (~> 1.4.0)
+    glimmer-dsl-web (0.4.0)
+      glimmer (~> 2.8.0)
+      glimmer-dsl-css (~> 1.5.0)
       glimmer-dsl-xml (~> 1.4.0)
       opal (= 1.8.2)
       opal-async (~> 1.4.1)
@@ -170,7 +170,7 @@ GEM
       opal (>= 1.0, < 2.0)
       sprockets (~> 4.0)
       tilt (>= 1.4)
-    parser (3.3.3.0)
+    parser (3.3.4.0)
       ast (~> 2.4.1)
       racc
     psych (5.1.2)
@@ -272,7 +272,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  glimmer-dsl-web (~> 0.3.2)
+  glimmer-dsl-web (~> 0.4.0)
   importmap-rails
   jbuilder
   puma (~> 5.0)
