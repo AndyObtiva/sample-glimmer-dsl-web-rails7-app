@@ -10,9 +10,9 @@ gem "rails", "~> 7.0.1"
 gem "sprockets-rails"
 
 # Enable if you want to use PostgreSQL in Production
-# group :production do
-#   gem 'pg', '> 0'
-# end
+group :production do
+  gem "pg", "~> 1.5"
+end
 
 # Use sqlite3 as the database for Active Record
 group :development do
@@ -81,3 +81,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development

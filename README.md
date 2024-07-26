@@ -3,6 +3,10 @@
 
 This is a sample app built with [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) (Ruby in the Browser Web GUI Library).
 
+You can access a deployed version of it by clicking on this link:
+
+https://sample-glimmer-dsl-web-rails7-app-black-sound-6793.fly.dev/
+
 ## Setup Instructions
 
 Note that you need Ruby 3.2.2 to run this project.
@@ -14,7 +18,7 @@ This is a standard Rails app. As such, you may setup locally by cloning the repo
 
 Visit localhost:3000 in the web browser and You should see a Sample Selector app.
 
-![Sample Screenshot](/sample-glimmer-dsl-web-rails7-app.gif)
+[![Sample Screenshot](/sample-glimmer-dsl-web-rails7-app.gif)](https://sample-glimmer-dsl-web-rails7-app-black-sound-6793.fly.dev/)
 
 The Sample Selector Single-Page Application Frontend is written in Ruby using [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) in this file:
 
