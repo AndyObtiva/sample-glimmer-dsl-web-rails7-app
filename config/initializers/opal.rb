@@ -19,5 +19,4 @@ Rails.application.configure do
   #   - :ivars  # only instance variables
   #
   config.opal.assigns_in_templates = false
-  config.assets.debug = true
 end
