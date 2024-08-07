@@ -24,7 +24,7 @@ class SampleSelector
         onclick do |event|
           event.prevent_default
           markup_root.remove
-          BackAnchor.render
+          BackAnchor.render(presenter: @presenter)
           @presenter.run
         end
       }

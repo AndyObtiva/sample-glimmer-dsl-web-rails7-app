@@ -10,6 +10,7 @@ class SampleSelectorPresenter
     'hello_data_binding' => 'Hello, Data-Binding!',
     'hello_content_data_binding' => 'Hello, Content Data-Binding!',
     'hello_component' => 'Hello, Component!',
+    'hello_component_slots' => 'Hello, Component Slots!',
     'hello_paragraph' => 'Hello, Paragraph!',
     'hello_input_date_time' => 'Hello, Input Date/Time!',
     'hello_form_mvp' => 'Hello, Form (MVP)!',
@@ -26,6 +27,7 @@ class SampleSelectorPresenter
   
   def initialize
     self.selected_sample = SAMPLES.first
+    @original_constants = Object.constants
   end
   
   def selected_sample=(sample)
@@ -40,5 +42,9 @@ class SampleSelectorPresenter
   
   def run
     selected_sample.run
+  end
+  
+  def clean
+    (Object.constants - @original_constants).each { |constant| Object.send(:remove_const, constant) }
   end
 end

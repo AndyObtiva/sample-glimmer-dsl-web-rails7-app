@@ -284,7 +284,7 @@ DEPENDENCIES
   capybara
   debug
   dockerfile-rails (>= 1.6)
-  glimmer-dsl-web (~> 0.4.4)
+  glimmer-dsl-web (~> 0.4.0)
   importmap-rails
   jbuilder
   pg (~> 1.5)

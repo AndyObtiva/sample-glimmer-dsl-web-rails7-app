@@ -67,6 +67,12 @@ class Sample
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_component.rb'
       end
+    when 'hello_component_slots'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_component_slots.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_component_slots.rb'
+      end
     when 'hello_paragraph'
       begin
         load 'glimmer-dsl-web/samples/hello/hello_paragraph.rb'
