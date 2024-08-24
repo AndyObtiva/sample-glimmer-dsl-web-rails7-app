@@ -1,6 +1,7 @@
 class SamplesTable
   include Glimmer::Web::Component
   
+  event :sample_change
   attribute :presenter
   
   markup {
@@ -17,6 +18,7 @@ class SamplesTable
             onclick do |event|
               event.prevent_default
               presenter.selected_sample = sample
+              notify_listeners(:sample_change, sample)
             end
           }
         end

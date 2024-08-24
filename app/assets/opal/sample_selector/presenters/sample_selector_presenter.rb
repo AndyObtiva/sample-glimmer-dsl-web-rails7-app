@@ -10,6 +10,7 @@ class SampleSelectorPresenter
     'hello_data_binding' => 'Hello, Data-Binding!',
     'hello_content_data_binding' => 'Hello, Content Data-Binding!',
     'hello_component' => 'Hello, Component!',
+    'hello_component_listeners' => 'Hello, Component Listeners!',
     'hello_component_slots' => 'Hello, Component Slots!',
     'hello_paragraph' => 'Hello, Paragraph!',
     'hello_input_date_time' => 'Hello, Input Date/Time!',
