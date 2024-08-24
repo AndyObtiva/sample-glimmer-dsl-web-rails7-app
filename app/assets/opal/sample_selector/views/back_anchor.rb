@@ -10,7 +10,6 @@ class BackAnchor
       onclick do
         Glimmer::Web::Component.remove_all_components
         Element['body > *'].to_a[2..].each(&:remove) # this is needed for non-component samples
-        presenter.clean
         SampleSelector.render(parent: ".sample_selector")
       end
     }

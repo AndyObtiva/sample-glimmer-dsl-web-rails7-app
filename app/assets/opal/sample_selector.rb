@@ -12,21 +12,13 @@ class SampleSelector
     @presenter = SampleSelectorPresenter.new
   end
   
-  after_render do
-    @highlighted_code.scroll_to_glimmer_code
-  end
-  
   markup {
     div {
       h2("Run a sample or view a sample's code.", style: 'text-align: center;')
       
-      @highlighted_code = highlighted_code(language: 'ruby', model: @presenter, model_code_attribute: :selected_sample_code, float: 'right')
+      highlighted_code(language: 'ruby', model: @presenter, model_code_attribute: :selected_sample_code, float: 'right')
       
-      samples_table(presenter: @presenter) {
-        on_sample_change do |sample|
-          @highlighted_code.scroll_to_glimmer_code
-        end
-      }
+      samples_table(presenter: @presenter)
       
       button('Run', style: 'margin: 15px 0; padding: 10px; font-size: 1.3em;') {
         onclick do |event|
