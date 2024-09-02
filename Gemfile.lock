@@ -99,12 +99,12 @@ GEM
     glimmer (2.8.0)
       array_include_methods (>= 1.4.0, < 1.6.0)
       facets (>= 3.1.0, < 4.0.0)
-    glimmer-dsl-css (1.5.1)
+    glimmer-dsl-css (1.5.2)
       css_parser (>= 1.0.0, < 2.0.0)
       glimmer (>= 2.0.0, < 3.0.0)
-    glimmer-dsl-web (0.6.0)
+    glimmer-dsl-web (0.6.1)
       glimmer (~> 2.8.0)
-      glimmer-dsl-css (~> 1.5.1)
+      glimmer-dsl-css (~> 1.5.2)
       glimmer-dsl-xml (~> 1.4.0)
       opal (= 1.8.2)
       opal-async (~> 1.4.1)
@@ -142,7 +142,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.1)
     msgpack (1.7.2)
-    net-imap (0.4.14)
+    net-imap (0.4.15)
       date
       net-protocol
     net-pop (0.1.2)
@@ -245,7 +245,7 @@ GEM
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
     stringio (3.1.0)
-    thor (1.3.1)
+    thor (1.3.2)
     tilt (2.4.0)
     timeout (0.4.1)
     to_collection (2.0.1)
@@ -284,7 +284,7 @@ DEPENDENCIES
   capybara
   debug
   dockerfile-rails (>= 1.6)
-  glimmer-dsl-web (~> 0.6.0)
+  glimmer-dsl-web (~> 0.6.1)
   importmap-rails
   jbuilder
   pg (~> 1.5)
