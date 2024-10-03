@@ -49,12 +49,12 @@ class HighlightedCode
   
   def scroll_to_glimmer_code
     Async::Timeout.new 50 do
-      table_rows = @code_element.dom_element.find('table tr')
-      lines = table_rows.map(&:text)
+      lines = model.send(model_code_attribute).lines
       glimmer_code_occurrence = lines.each_with_index.select {|line, i| line.include?('include Glimmer')}.last
       if glimmer_code_occurrence
-        glimmer_code_index_delta = glimmer_code_occurrence[0].include?('include Glimmer::Web::Component') ? 2 : 1
-        glimmer_code_index = [glimmer_code_occurrence[1] - glimmer_code_index_delta, 0].max
+        glimmer_code_occurrence_text, glimmer_code_occurrence_line = glimmer_code_occurrence
+        glimmer_code_index_delta = glimmer_code_occurrence_text.include?('Glimmer::Web::Component') ? 2 : 1
+        glimmer_code_index = [glimmer_code_occurrence_line - glimmer_code_index_delta, 0].max
         glimmer_code_scroll_top = ((markup_root.scroll_height.to_f - 26) / lines.size.to_f) * glimmer_code_index
         markup_root.scroll_top = glimmer_code_scroll_top
       end
