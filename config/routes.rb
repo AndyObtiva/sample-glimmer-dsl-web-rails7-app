@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   # TODO enable Rails Engine when ready in glimmer-dsl-web
 #   mount Glimmer::Engine => "/glimmer" # add on top
   resources :welcomes
