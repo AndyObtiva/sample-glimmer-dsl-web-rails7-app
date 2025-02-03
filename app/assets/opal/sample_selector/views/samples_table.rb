@@ -37,6 +37,21 @@ class SamplesTable
             span(' ) ')
           }
         }
+        
+        tr {
+          # handle this sample differently via links to demonstrate visiting outside pages
+          td {
+            span('Contact Manager')
+            span(' ( ')
+            a('Run', "data-turbo": "false", href: '/contacts')
+            span(' | ')
+            a('Code',
+              target: '_blank',
+              href: 'https://github.com/AndyObtiva/sample-glimmer-dsl-web-rails7-app/blob/master/app/assets/opal/contact_manager.rb'
+            )
+            span(' ) ')
+          }
+        }
       }
         
       style {

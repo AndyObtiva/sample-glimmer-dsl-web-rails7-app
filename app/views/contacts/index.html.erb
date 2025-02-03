@@ -1,9 +1,1 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Contacts</h1>
-
-<div id="contacts">
-  <%= glimmer_component('contact_management', attributes_of_contacts: @contacts.map(&:attributes)) %>
-</div>
-
-<%= link_to "New contact", new_contact_path %>
+<%= glimmer_component('contact_manager', attributes_of_contacts: @contacts.map(&:attributes)) %>
