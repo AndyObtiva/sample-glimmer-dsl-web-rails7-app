@@ -3,12 +3,7 @@
 <h1>Contacts</h1>
 
 <div id="contacts">
-  <% @contacts.each do |contact| %>
-    <%= render contact %>
-    <p>
-      <%= link_to "Show this contact", contact %>
-    </p>
-  <% end %>
+  <%= glimmer_component('contact_management', attributes_of_contacts: @contacts.map(&:attributes)) %>
 </div>
 
 <%= link_to "New contact", new_contact_path %>
