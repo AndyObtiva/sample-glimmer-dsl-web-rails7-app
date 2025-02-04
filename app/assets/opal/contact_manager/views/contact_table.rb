@@ -16,13 +16,15 @@ class ContactTable
         }
       }
       tbody {
-        presenter.contacts.each do |contact|
-          tr {
-            Contact::ATTRIBUTES_DISPLAYABLE.each do |attribute|
-              td(contact[attribute].to_s)
-            end
-          }
-        end
+        content(presenter, :contacts) {
+          presenter.contacts.each do |contact|
+            tr {
+              Contact::ATTRIBUTES_DISPLAYABLE.each do |attribute|
+                td(contact[attribute].to_s)
+              end
+            }
+          end
+        }
       }
     }
   }

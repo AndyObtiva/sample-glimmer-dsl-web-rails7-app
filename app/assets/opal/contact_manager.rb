@@ -20,11 +20,13 @@ class ContactManager
       
       h1('Contacts')
       
-      if presenter.contacts&.any?
-        contact_table(presenter:)
-      else
-        p('No contacts available.')
-      end
+      contact_table(presenter:) {
+        style(:display) <= [presenter, :contacts, on_read: -> (contacts) { contacts.any? ? 'table' : 'none' }]
+      }
+      
+      p('No contacts available.', class: 'table-message') {
+        style(:display) <= [presenter, :contacts, on_read: -> (contacts) { contacts.any? ? 'none' : 'block' }]
+      }
     }
   }
   
@@ -34,7 +36,7 @@ class ContactManager
       margin_right :auto
     }
     
-    r('.contact-manager h1') {
+    r('.contact-manager h1, .contact-manager p.table-message') {
       text_align :center
     }
   }
