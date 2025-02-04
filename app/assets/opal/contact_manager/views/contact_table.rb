@@ -1,3 +1,4 @@
+require 'facets/string/titlecase'
 require_relative '../models/contact'
 require_relative '../presenters/contact_presenter'
 
@@ -10,8 +11,8 @@ class ContactTable
     table { # automatically gets .contact-table class
       thead {
         tr {
-          Contact::ATTRIBUTES_DISPLAYABLE.each do |attribute|
-            th(attribute.split('_').map(&:capitalize).join(' '))
+          Contact::ATTRIBUTES_DISPLAY.each do |attribute|
+            th(attribute.titlecase)
           end
         }
       }
@@ -19,7 +20,7 @@ class ContactTable
         content(presenter, :contacts) {
           presenter.contacts.each do |contact|
             tr {
-              Contact::ATTRIBUTES_DISPLAYABLE.each do |attribute|
+              Contact::ATTRIBUTES_DISPLAY.each do |attribute|
                 td(contact[attribute].to_s)
               end
             }
