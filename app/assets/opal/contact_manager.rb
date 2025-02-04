@@ -1,43 +1,27 @@
 require 'glimmer-dsl-web'
 
-require_relative 'contact_manager/models/contact'
+require_relative 'contact_manager/presenters/contact_presenter'
+require_relative 'contact_manager/views/contact_table'
 
 class ContactManager
   include Glimmer::Web::Component
   
   option :attributes_of_contacts
   
+  attr_reader :presenter
+  
   before_render do
-    @contacts = attributes_of_contacts.map do |attributes_of_contact|
-      Contact.new(attributes_of_contact.transform_keys(&:to_sym))
-    end
+    @presenter = ContactPresenter.new(attributes_of_contacts)
   end
   
   markup {
-    div(id: 'contacts') {
-      p(id: 'notice', style: {color: :green})
+    div {
+      p(class: 'notice', style: {color: :green})
       
       h1('Contacts')
       
-      if attributes_of_contacts&.any?
-        table {
-          thead {
-            tr {
-              Contact::ATTRIBUTES_DISPLAYABLE.each do |attribute|
-                th(attribute.split('_').map(&:capitalize).join(' '))
-              end
-            }
-          }
-          tbody {
-            @contacts.each do |contact|
-              tr {
-                Contact::ATTRIBUTES_DISPLAYABLE.each do |attribute|
-                  td(contact[attribute].to_s)
-                end
-              }
-            end
-          }
-        }
+      if presenter.contacts&.any?
+        contact_table(presenter:)
       else
         p('No contacts available.')
       end
@@ -45,27 +29,13 @@ class ContactManager
   }
   
   style {
-    r('#notice, #contacts h1, #contacts table') {
+    r('.contact-manager .notice, .contact-manager h1') {
       margin_left :auto
       margin_right :auto
     }
     
-    r('#contacts h1') {
+    r('.contact-manager h1') {
       text_align :center
-    }
-    
-    r('#contacts table') {
-      text_align :left
-      border_spacing 0
-      cursor :default
-    }
-    
-    r('#contacts table thead tr th, #contacts table tbody tr td') {
-      padding 10
-    }
-    
-    r('#contacts table tbody tr:hover') {
-      background :lightblue
     }
   }
 end
