@@ -15,17 +15,17 @@ class ContactManager
   end
   
   markup {
-    div {
+    div { # automatically gets .contact-manager class
       p(class: 'notice', style: {color: :green})
       
       h1('Contacts')
       
       contact_table(presenter:) {
-        style(:display) <= [presenter, :contacts, on_read: -> (contacts) { contacts.any? ? 'table' : 'none' }]
+        class_name(:hidden) <= [presenter, :contacts, on_read: :empty?]
       }
       
       p('No contacts available.', class: 'table-message') {
-        style(:display) <= [presenter, :contacts, on_read: -> (contacts) { contacts.any? ? 'none' : 'block' }]
+        class_name(:hidden) <= [presenter, :contacts, on_read: :any?]
       }
     }
   }
@@ -38,6 +38,10 @@ class ContactManager
     
     r('.contact-manager h1, .contact-manager p.table-message') {
       text_align :center
+    }
+    
+    r('.contact-manager .hidden') {
+      display :none
     }
   }
 end

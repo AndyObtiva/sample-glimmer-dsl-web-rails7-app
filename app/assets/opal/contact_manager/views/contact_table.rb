@@ -7,7 +7,7 @@ class ContactTable
   option :presenter
   
   markup {
-    table {
+    table { # automatically gets .contact-table class
       thead {
         tr {
           Contact::ATTRIBUTES_DISPLAYABLE.each do |attribute|
