@@ -5,4 +5,8 @@ Contact = Struct.new(:id, :first_name, :last_name, :email, :phone, :street, :cit
     self.id = self.first_name = self.last_name = self.email = self.phone = self.street =
       self.city = self.state = self.zip = self.created_at = self.updated_at = nil
   end
+  
+  def load_with(other_contact)
+    members.each { |attribute| self[attribute] = other_contact[attribute] }
+  end
 end

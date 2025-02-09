@@ -27,10 +27,12 @@ class NewContactForm
       }
       
       div(class: 'actions') {
-        input(type: 'submit', value: 'Add Contact') {
+        input(type: 'submit') {
+          value <= [presenter.new_contact, :id, on_read: ->(val) {val.nil? ? 'Add Contact' : 'Update Contact'}]
+        
           onclick do |event|
             event.prevent_default
-            presenter.add_contact
+            presenter.save_contact
           end
         }
       }

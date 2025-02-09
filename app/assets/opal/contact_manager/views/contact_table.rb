@@ -20,10 +20,12 @@ class ContactTable
       }
       tbody {
         content(presenter, :contacts) {
-          presenter.contacts.each do |contact|
+          presenter.contacts.each_with_index do |contact, contact_index|
             tr {
               Contact::ATTRIBUTES_DISPLAY.each do |attribute|
-                td(contact[attribute].to_s)
+                td {
+                  inner_text <= [contact, attribute]
+                }
               end
               
               td(class: 'destroy') {
@@ -32,6 +34,13 @@ class ContactTable
                   presenter.delete_contact(contact)
                 end
               }
+              
+              class_name(:editable) <= [presenter, :edit_index, on_read: ->(edit_index) { edit_index == contact_index}]
+              
+              onclick do |event|
+                event.prevent_default
+                presenter.edit_contact(contact)
+              end
             }
           end
         }
@@ -62,10 +71,42 @@ class ContactTable
       transition 'background .2s ease-out'
     }
     
-    # TODO odd row coloring
-    
     r('table.contact-table thead tr th.action-column') {
       width 20
+    }
+    
+    r('table.contact-table tbody tr td') {
+      border_top '3px solid transparent'
+      border_bottom '3px solid transparent'
+    }
+    
+    r('table.contact-table tbody tr td:first-child') {
+      border_left '3px solid transparent'
+      border_top '3px solid transparent'
+      border_bottom '3px solid transparent'
+    }
+    
+    r('table.contact-table tbody tr td:last-child') {
+      border_right '3px solid transparent'
+      border_top '3px solid transparent'
+      border_bottom '3px solid transparent'
+    }
+    
+    r('table.contact-table tbody tr.editable td') {
+      border_top '3px solid lightblue'
+      border_bottom '3px solid lightblue'
+    }
+    
+    r('table.contact-table tbody tr.editable td:first-child') {
+      border_left '3px solid lightblue'
+      border_top '3px solid lightblue'
+      border_bottom '3px solid lightblue'
+    }
+    
+    r('table.contact-table tbody tr.editable td:last-child') {
+      border_right '3px solid lightblue'
+      border_top '3px solid lightblue'
+      border_bottom '3px solid lightblue'
     }
       
     r('table.contact-table tbody tr td.destroy') {

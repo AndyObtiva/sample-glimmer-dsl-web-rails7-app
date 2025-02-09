@@ -19,7 +19,7 @@ class ContactManager
     div { # automatically gets .contact-manager class
       p(class: 'notice', style: {color: :green})
       
-      h1('Contacts')
+      h1('Contact Manager')
       
       new_contact_form(presenter:)
       

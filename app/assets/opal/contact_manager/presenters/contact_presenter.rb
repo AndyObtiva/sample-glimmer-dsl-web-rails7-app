@@ -2,7 +2,7 @@ require_relative '../models/contact'
 require_relative '../services/resource_service'
 
 class ContactPresenter
-  attr_accessor :contacts
+  attr_accessor :contacts, :edit_index
   
   def initialize(attributes_of_contacts)
     @contacts = attributes_of_contacts.map do |attributes_of_contact|
@@ -12,16 +12,15 @@ class ContactPresenter
   
   def new_contact
     time_in_millis = Time.now.to_i
-    @new_contact ||= Contact.new(
-      first_name: "John #{time_in_millis}", # TODO delete all those arguments (they're here for testing only)
-      last_name: "Doe #{time_in_millis}",
-      email: "john#{time_in_millis}@doe.com",
-      phone: time_in_millis.to_s.chars.take(10).join,
-      street: "123 Spiggot #{time_in_millis}",
-      city: "Chicago",
-      state: "Illinois",
-      zip: "60662",
-    )
+    @new_contact ||= Contact.new
+  end
+  
+  def save_contact
+    if new_contact.id.nil?
+      add_contact
+    else
+      update_contact
+    end
   end
   
   def add_contact
@@ -39,12 +38,33 @@ class ContactPresenter
     end
   end
   
+  def update_contact
+    ResourceService.update(new_contact) do |response|
+      if response.ok?
+        updated_contact_response_body = Native(response.body)
+        updated_contact = new_contact.clone
+        updated_contact.updated_at = updated_contact_response_body.updated_at
+        contacts[edit_index].load_with(updated_contact)
+        self.edit_index = nil
+        new_contact.reset
+#       else # TODO handle error by displaying errors on screen without clearing contact
+      end
+    end
+  end
+  
+  def edit_contact(contact)
+    self.edit_index = contacts.index(contact)
+    new_contact.load_with(contact)
+  end
+  
   def delete_contact(contact)
     delete_contact_confirmation = $$.confirm("Are you sure you want to delete that contact?")
     if delete_contact_confirmation
       ResourceService.destroy(contact) do |response|
         if response.ok?
           contacts.delete(contact)
+          self.edit_index = nil
+          new_contact.reset
         end
       end
     end
