@@ -27,9 +27,25 @@ class ContactPresenter
   def add_contact
     ResourceService.create(new_contact) do |response|
       if response.ok?
-        contacts << new_contact.clone
+        created_contact_response_body = Native(response.body)
+        created_contact = new_contact.clone
+        created_contact.id = created_contact_response_body.id
+        created_contact.created_at = created_contact_response_body.created_at
+        created_contact.updated_at = created_contact_response_body.updated_at
+        contacts << created_contact
         new_contact.reset
 #       else # TODO handle error by displaying errors on screen without clearing contact
+      end
+    end
+  end
+  
+  def delete_contact(contact)
+    delete_contact_confirmation = $$.confirm("Are you sure you want to delete that contact?")
+    if delete_contact_confirmation
+      ResourceService.destroy(contact) do |response|
+        if response.ok?
+          contacts.delete(contact)
+        end
       end
     end
   end

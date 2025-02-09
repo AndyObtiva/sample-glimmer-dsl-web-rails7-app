@@ -14,6 +14,8 @@ class ContactTable
           Contact::ATTRIBUTES_DISPLAY.each do |attribute|
             th(attribute.titlecase)
           end
+          
+          th(class: 'action-column') # actions
         }
       }
       tbody {
@@ -23,6 +25,13 @@ class ContactTable
               Contact::ATTRIBUTES_DISPLAY.each do |attribute|
                 td(contact[attribute].to_s)
               end
+              
+              td(class: 'destroy') {
+                onclick do |event|
+                  event.prevent_default
+                  presenter.delete_contact(contact)
+                end
+              }
             }
           end
         }
@@ -41,6 +50,7 @@ class ContactTable
     
     r('table.contact-table thead tr th, table.contact-table tbody tr td') {
       padding 10
+      height 34
     }
     
     r('table.contact-table tbody tr:hover') {
@@ -48,5 +58,37 @@ class ContactTable
     }
     
     # TODO odd row coloring
+    
+    r('table.contact-table thead tr th.action-column') {
+      width 20
+    }
+      
+    r('table.contact-table tbody tr td.destroy') {
+      bottom 0
+      color '#949494'
+      display :none
+      font_size 29
+      margin 'auto 0'
+      right 10
+      top 0
+      transition 'color .2s ease-out'
+      width 20
+    }
+    
+    r('table.contact-table tbody tr td.destroy:after') {
+      content '"×"'
+      display :block
+      height 100.%
+      line_height '1.1'
+    }
+    
+    r('table.contact-table tbody tr:focus td.destroy, table.contact-table tbody tr:hover td.destroy') {
+      display :block
+    }
+    
+    r('table.contact-table tbody tr td.destroy:focus, table.contact-table tbody tr td.destroy:hover') {
+      display :block
+      color :black
+    }
   }
 end
