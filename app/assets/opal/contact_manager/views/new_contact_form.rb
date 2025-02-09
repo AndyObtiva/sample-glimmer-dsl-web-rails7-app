@@ -17,7 +17,9 @@ class NewContactForm
                 input_id = "attribute-#{object_id}"
                 
                 label(attribute.titlecase, for: input_id)
-                input(type: 'text', id: input_id)
+                input(type: 'text', id: input_id) {
+                  value <=> [presenter.new_contact, attribute]
+                }
               }
             end
           }

@@ -46,5 +46,7 @@ class ContactTable
     r('table.contact-table tbody tr:hover') {
       background :lightblue
     }
+    
+    # TODO odd row coloring
   }
 end
