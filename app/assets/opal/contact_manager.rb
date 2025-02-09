@@ -37,7 +37,7 @@ class ContactManager
   
   style {
     r('body, .contact-manager') {
-      background '#f9f6f0'
+      background '#f7f4ee'
     }
     
     r('.contact-manager .notice, .contact-manager h1') {

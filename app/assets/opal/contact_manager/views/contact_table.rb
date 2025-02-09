@@ -53,8 +53,13 @@ class ContactTable
       height 34
     }
     
+    r('table.contact-table tbody tr:nth-child(odd)') {
+      background '#fffff9'
+    }
+    
     r('table.contact-table tbody tr:hover') {
       background :lightblue
+      transition 'background .2s ease-out'
     }
     
     # TODO odd row coloring
@@ -65,29 +70,28 @@ class ContactTable
       
     r('table.contact-table tbody tr td.destroy') {
       bottom 0
-      color '#949494'
-      display :none
       font_size 29
       margin 'auto 0'
       right 10
       top 0
-      transition 'color .2s ease-out'
       width 20
     }
     
     r('table.contact-table tbody tr td.destroy:after') {
       content '"×"'
+      color '#949494'
       display :block
       height 100.%
       line_height '1.1'
+      opacity '0'
+      transition 'opacity .2s ease-out, color .2s ease-out'
     }
     
-    r('table.contact-table tbody tr:focus td.destroy, table.contact-table tbody tr:hover td.destroy') {
-      display :block
+    r('table.contact-table tbody tr:focus td.destroy:after, table.contact-table tbody tr:hover td.destroy:after') {
+      opacity '1'
     }
     
-    r('table.contact-table tbody tr td.destroy:focus, table.contact-table tbody tr td.destroy:hover') {
-      display :block
+    r('table.contact-table tbody tr td.destroy:focus:after, table.contact-table tbody tr td.destroy:hover:after') {
       color :black
     }
   }
