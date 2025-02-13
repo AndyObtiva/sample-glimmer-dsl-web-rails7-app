@@ -17,7 +17,10 @@ class Sample
   end
   
   def run
-    # We must embeded static require/load statements for Opal to pre-load them into page
+    # NOTE: This is NOT normal code for everyday development. In real apps, this is not needed normally,
+    # so do not gage normal use of the Frontend Framework by this code.
+    # This is a sample app that dynamically loads/unloads Ruby files, which is NOT a common practice.
+    # We embed static require/load statements below for Opal to auto-link to them during transpilation.
     case @id
     when 'hello_world'
       begin
