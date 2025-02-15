@@ -10,7 +10,7 @@ class ContactPresenter
     end
   end
   
-  def new_contact
+  def new_contact # TODO rename to form_contact
     time_in_millis = Time.now.to_i
     @new_contact ||= Contact.new
   end
@@ -33,7 +33,9 @@ class ContactPresenter
         created_contact.updated_at = created_contact_response_body.updated_at
         contacts << created_contact
         new_contact.reset
-#       else # TODO handle error by displaying errors on screen without clearing contact
+        new_contact.errors = nil
+      else
+        new_contact.errors = JSON.parse(response.body)
       end
     end
   end
@@ -47,7 +49,9 @@ class ContactPresenter
         contacts[edit_index].load_with(updated_contact)
         self.edit_index = nil
         new_contact.reset
-#       else # TODO handle error by displaying errors on screen without clearing contact
+        new_contact.errors = nil
+      else
+        new_contact.errors = JSON.parse(response.body)
       end
     end
   end

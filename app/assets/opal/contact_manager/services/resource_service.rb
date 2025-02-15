@@ -1,5 +1,7 @@
 # TODO move to glimmer-dsl-web
 class ResourceService
+  TIMESTAMP_ATTRIBUTES = ['created_at', 'updated_at']
+  
   class << self
     def create(resource, singular_resource_name: nil, plural_resource_name: nil, create_resource_url: nil, &response_handler)
       singular_resource_name ||= singular_resource_name_for(resource)
@@ -25,7 +27,7 @@ class ResourceService
     def resource_paramters(resource, singular_resource_name: nil)
       singular_resource_name ||= singular_resource_name_for(resource)
       paramters = {authenticity_token:}
-      paramters[singular_resource_name] = resource.to_h.reject { |attribute, value| value.nil? }
+      paramters[singular_resource_name] = resource.to_h.reject { |attribute, value| TIMESTAMP_ATTRIBUTES.include?(attribute) }
       paramters
     end
     

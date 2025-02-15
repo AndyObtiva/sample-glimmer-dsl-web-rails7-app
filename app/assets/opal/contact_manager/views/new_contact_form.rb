@@ -9,6 +9,11 @@ class NewContactForm
   
   markup {
     form { # automatically gets .new-contact-form class
+      div(class: 'notice') {
+        class_name(:hidden) <= [presenter.new_contact, :errors, on_read: :nil?]
+        inner_text <= [presenter.new_contact, :error_message, computed_by: :errors]
+      }
+    
       div(class: 'attributes') {
         grouped_contact_attributes.each do |attribute_group|
           div(class: 'attribute-group') {
@@ -40,10 +45,21 @@ class NewContactForm
   }
   
   style {
+    r('.new-contact-form .notice') {
+      margin_left :auto
+      margin_right :auto
+      text_align :center
+      background :lightpink
+      padding 10
+      border '1px solid black'
+      border_radius 5
+    }
+    
     r('form.new-contact-form') {
       display :table
       margin_left :auto
       margin_right :auto
+      max_width 514
     }
     
     r('form.new-contact-form div.attribute-group') {
@@ -65,9 +81,17 @@ class NewContactForm
       padding_right 10
     }
     
+    r('form.new-contact-form div input') {
+      margin_bottom 5
+    }
+    
     r('form.new-contact-form .actions input[type=submit]') {
       display :block
       width 100.%
+    }
+    
+    r('.new-contact-form .hidden') {
+      display :none
     }
   }
   

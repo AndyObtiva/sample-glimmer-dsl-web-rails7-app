@@ -17,8 +17,6 @@ class ContactManager
   
   markup {
     div { # automatically gets .contact-manager class
-      p(class: 'notice', style: {color: :green})
-      
       h1('Contact Manager')
       
       new_contact_form(presenter:)
@@ -40,7 +38,7 @@ class ContactManager
       background '#f7f4ee'
     }
     
-    r('.contact-manager .notice, .contact-manager h1') {
+    r('.contact-manager h1') {
       margin_left :auto
       margin_right :auto
     }
