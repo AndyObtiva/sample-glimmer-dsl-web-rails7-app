@@ -24,11 +24,11 @@ class ContactManager
       div(style: {margin: 10, clear: :both})
       
       contact_table(presenter:) {
-        class_name(:hidden) <= [presenter, :contacts, on_read: :empty?]
+        class_name('hidden') <= [presenter, :contacts, on_read: :empty?]
       }
       
       p('No contacts available.', class: 'table-message') {
-        class_name(:hidden) <= [presenter, :contacts, on_read: :any?]
+        class_name('hidden') <= [presenter, :contacts, on_read: :any?]
       }
     }
   }

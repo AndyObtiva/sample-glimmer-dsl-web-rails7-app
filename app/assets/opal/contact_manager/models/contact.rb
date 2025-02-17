@@ -16,9 +16,16 @@ Contact = Struct.new(:id, :first_name, :last_name, :email, :phone, :street, :cit
     return nil if errors.nil?
     errors.reduce('') do |output, error|
       error_attribute, error_values = error
-      error_string = error_values.map { |error_value| "#{error_attribute} #{error_value}" }.join(', ')
+      error_string = error_values.map { |error_value| "#{error_attribute.titlecase} #{error_value}" }.join(', ')
       separator = ',' unless output == ''
       "#{output}#{separator} #{error_string}"
     end
+  end
+  
+  def attribute_error_message(error_attribute)
+    return nil if errors.nil?
+    error_values = errors[error_attribute.to_s]
+    return nil if error_values.nil?
+    error_values.map { |error_value| "#{error_attribute.titlecase} #{error_value}" }.join(', ')
   end
 end

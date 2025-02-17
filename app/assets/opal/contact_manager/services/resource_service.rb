@@ -1,4 +1,5 @@
-# TODO move to glimmer-dsl-web
+# ResourceService manages create/update/destory REST API calls for Rails resources agnostically
+# TODO Refactor/Extract into glimmer-dsl-web
 class ResourceService
   TIMESTAMP_ATTRIBUTES = ['created_at', 'updated_at']
   

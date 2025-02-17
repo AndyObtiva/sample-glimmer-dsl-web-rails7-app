@@ -59,6 +59,7 @@ class ContactPresenter
   def edit_contact(contact)
     self.edit_index = contacts.index(contact)
     form_contact.load_with(contact)
+    form_contact.errors = nil
   end
   
   def delete_contact(contact)
@@ -69,6 +70,7 @@ class ContactPresenter
           contacts.delete(contact)
           self.edit_index = nil
           form_contact.reset
+          form_contact.errors = nil
         end
       end
     end
