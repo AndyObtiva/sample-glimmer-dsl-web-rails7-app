@@ -1,5 +1,6 @@
+require 'rails/resource_service'
+
 require_relative '../models/contact'
-require_relative '../services/resource_service'
 
 class ContactPresenter
   attr_accessor :contacts, :edit_index
@@ -24,7 +25,7 @@ class ContactPresenter
   end
   
   def add_contact
-    ResourceService.create(form_contact) do |response|
+    Rails::ResourceService.create(resource: form_contact) do |response|
       if response.ok?
         created_contact_response_body = Native(response.body)
         created_contact = form_contact.clone
@@ -41,7 +42,7 @@ class ContactPresenter
   end
   
   def update_contact
-    ResourceService.update(form_contact) do |response|
+    Rails::ResourceService.update(resource: form_contact) do |response|
       if response.ok?
         updated_contact_response_body = Native(response.body)
         updated_contact = form_contact.clone
@@ -65,7 +66,7 @@ class ContactPresenter
   def delete_contact(contact)
     delete_contact_confirmation = $$.confirm("Are you sure you want to delete that contact?")
     if delete_contact_confirmation
-      ResourceService.destroy(contact) do |response|
+      Rails::ResourceService.destroy(resource: contact) do |response|
         if response.ok?
           contacts.delete(contact)
           self.edit_index = nil

@@ -20,7 +20,7 @@ class Contact < ApplicationRecord
   validates :state,
             allow_blank: true,
             inclusion: {
-              in: STATES.keys + STATES.values + STATES.values.map(&:upcase),
+              in: STATES.keys + STATES.values + STATES.values.map(&:upcase) + STATES.values.map(&:downcase),
               message: 'is not a valid US state'
             }
   validates :zip,
