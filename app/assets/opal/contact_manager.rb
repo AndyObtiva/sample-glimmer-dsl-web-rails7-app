@@ -2,7 +2,7 @@ require 'glimmer-dsl-web'
 
 require_relative 'contact_manager/presenters/contact_presenter'
 require_relative 'contact_manager/views/contact_table'
-require_relative 'contact_manager/views/new_contact_form'
+require_relative 'contact_manager/views/contact_form'
 
 class ContactManager
   include Glimmer::Web::Component
@@ -19,7 +19,7 @@ class ContactManager
     div { # automatically gets .contact-manager class
       h1('Contact Manager')
       
-      new_contact_form(presenter:)
+      contact_form(presenter:)
       
       div(style: {margin: 10, clear: :both})
       

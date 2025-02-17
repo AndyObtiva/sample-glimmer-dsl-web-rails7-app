@@ -2,16 +2,16 @@ require 'facets/string/titlecase'
 require_relative '../models/contact'
 require_relative '../presenters/contact_presenter'
 
-class NewContactForm
+class ContactForm
   include Glimmer::Web::Component
   
   option :presenter
   
   markup {
-    form { # automatically gets .new-contact-form class
+    form { # automatically gets .contact-form class
       div(class: 'notice') {
-        class_name(:hidden) <= [presenter.new_contact, :errors, on_read: :nil?]
-        inner_text <= [presenter.new_contact, :error_message, computed_by: :errors]
+        class_name(:hidden) <= [presenter.form_contact, :errors, on_read: :nil?]
+        inner_text <= [presenter.form_contact, :error_message, computed_by: :errors]
       }
     
       div(class: 'attributes') {
@@ -23,7 +23,7 @@ class NewContactForm
                 
                 label(attribute.titlecase, for: input_id)
                 input(type: 'text', id: input_id) {
-                  value <=> [presenter.new_contact, attribute]
+                  value <=> [presenter.form_contact, attribute]
                 }
               }
             end
@@ -33,7 +33,7 @@ class NewContactForm
       
       div(class: 'actions') {
         input(type: 'submit') {
-          value <= [presenter.new_contact, :id, on_read: ->(val) {val.nil? ? 'Add Contact' : 'Update Contact'}]
+          value <= [presenter.form_contact, :id, on_read: ->(val) {val.nil? ? 'Add Contact' : 'Update Contact'}]
         
           onclick do |event|
             event.prevent_default
@@ -45,7 +45,7 @@ class NewContactForm
   }
   
   style {
-    r('.new-contact-form .notice') {
+    r('.contact-form .notice') {
       margin_left :auto
       margin_right :auto
       text_align :center
@@ -55,42 +55,42 @@ class NewContactForm
       border_radius 5
     }
     
-    r('form.new-contact-form') {
+    r('form.contact-form') {
       display :table
       margin_left :auto
       margin_right :auto
       max_width 514
     }
     
-    r('form.new-contact-form div.attribute-group') {
+    r('form.contact-form div.attribute-group') {
       display :inline
       float :left
       margin 10
     }
     
-    r('form.new-contact-form div.attribute') {
+    r('form.contact-form div.attribute') {
       max_width 300
       margin_left :auto
       margin_right :auto
     }
     
-    r('form.new-contact-form div label') {
+    r('form.contact-form div label') {
       float :left
       width 80
       text_align :right
       padding_right 10
     }
     
-    r('form.new-contact-form div input') {
+    r('form.contact-form div input') {
       margin_bottom 5
     }
     
-    r('form.new-contact-form .actions input[type=submit]') {
+    r('form.contact-form .actions input[type=submit]') {
       display :block
       width 100.%
     }
     
-    r('.new-contact-form .hidden') {
+    r('.contact-form .hidden') {
       display :none
     }
   }

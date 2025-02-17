@@ -10,13 +10,13 @@ class ContactPresenter
     end
   end
   
-  def new_contact # TODO rename to form_contact
+  def form_contact
     time_in_millis = Time.now.to_i
-    @new_contact ||= Contact.new
+    @form_contact ||= Contact.new
   end
   
   def save_contact
-    if new_contact.id.nil?
+    if form_contact.id.nil?
       add_contact
     else
       update_contact
@@ -24,41 +24,41 @@ class ContactPresenter
   end
   
   def add_contact
-    ResourceService.create(new_contact) do |response|
+    ResourceService.create(form_contact) do |response|
       if response.ok?
         created_contact_response_body = Native(response.body)
-        created_contact = new_contact.clone
+        created_contact = form_contact.clone
         created_contact.id = created_contact_response_body.id
         created_contact.created_at = created_contact_response_body.created_at
         created_contact.updated_at = created_contact_response_body.updated_at
         contacts << created_contact
-        new_contact.reset
-        new_contact.errors = nil
+        form_contact.reset
+        form_contact.errors = nil
       else
-        new_contact.errors = JSON.parse(response.body)
+        form_contact.errors = JSON.parse(response.body)
       end
     end
   end
   
   def update_contact
-    ResourceService.update(new_contact) do |response|
+    ResourceService.update(form_contact) do |response|
       if response.ok?
         updated_contact_response_body = Native(response.body)
-        updated_contact = new_contact.clone
+        updated_contact = form_contact.clone
         updated_contact.updated_at = updated_contact_response_body.updated_at
         contacts[edit_index].load_with(updated_contact)
         self.edit_index = nil
-        new_contact.reset
-        new_contact.errors = nil
+        form_contact.reset
+        form_contact.errors = nil
       else
-        new_contact.errors = JSON.parse(response.body)
+        form_contact.errors = JSON.parse(response.body)
       end
     end
   end
   
   def edit_contact(contact)
     self.edit_index = contacts.index(contact)
-    new_contact.load_with(contact)
+    form_contact.load_with(contact)
   end
   
   def delete_contact(contact)
@@ -68,7 +68,7 @@ class ContactPresenter
         if response.ok?
           contacts.delete(contact)
           self.edit_index = nil
-          new_contact.reset
+          form_contact.reset
         end
       end
     end
