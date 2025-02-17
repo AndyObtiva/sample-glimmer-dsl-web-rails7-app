@@ -115,35 +115,35 @@ class ContactForm
     }
     
     r('.error-tooltip-holder .error-tooltip-text') {
-      visibility 'hidden'
-      width '120px'
+      visibility :hidden
+      width 120
       background_color '#555'
       color '#fff'
-      text_align 'center'
-      border_radius '6px'
+      text_align :center
+      border_radius 6
       padding 5
-      position 'absolute'
+      position :absolute
       z_index '1'
-      bottom '125%'
-      left '50%'
-      margin_left '-60px'
+      bottom 125.%
+      left 50.%
+      margin_left -60
       opacity '0'
       transition 'opacity 0.3s'
     }
     
     r('.error-tooltip-holder .error-tooltip-text::after') {
       content '""'
-      position 'absolute'
-      top '100%'
-      left '50%'
-      margin_left '-5px'
-      border_width '5px'
-      border_style 'solid'
+      position :absolute
+      top 100.%
+      left 50.%
+      margin_left -5
+      border_width 5
+      border_style :solid
       border_color '#555 transparent transparent transparent'
     }
     
     r('.error-tooltip-holder:hover .error-tooltip-text') {
-      visibility 'visible'
+      visibility :visible
       opacity '1'
     }
     
