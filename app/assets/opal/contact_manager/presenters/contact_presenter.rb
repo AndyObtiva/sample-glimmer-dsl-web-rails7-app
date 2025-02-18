@@ -25,26 +25,26 @@ class ContactPresenter
   end
   
   def add_contact
-    Rails::ResourceService.create(resource: form_contact) do |response, created_contact|
+    Rails::ResourceService.create(resource: form_contact) do |response, created_contact, errors|
       if response.ok?
         contacts << created_contact
         form_contact.reset
         form_contact.errors = nil
       else
-        form_contact.errors = JSON.parse(response.body)
+        form_contact.errors = errors
       end
     end
   end
   
   def update_contact
-    Rails::ResourceService.update(resource: form_contact) do |response, updated_contact|
+    Rails::ResourceService.update(resource: form_contact) do |response, updated_contact, errors|
       if response.ok?
         contacts[edit_index].load_with(updated_contact)
         self.edit_index = nil
         form_contact.reset
         form_contact.errors = nil
       else
-        form_contact.errors = JSON.parse(response.body)
+        form_contact.errors = errors
       end
     end
   end
