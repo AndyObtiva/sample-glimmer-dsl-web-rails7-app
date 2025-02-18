@@ -25,13 +25,8 @@ class ContactPresenter
   end
   
   def add_contact
-    Rails::ResourceService.create(resource: form_contact) do |response|
+    Rails::ResourceService.create(resource: form_contact) do |response, created_contact|
       if response.ok?
-        created_contact_response_body = Native(response.body)
-        created_contact = form_contact.clone
-        created_contact.id = created_contact_response_body.id
-        created_contact.created_at = created_contact_response_body.created_at
-        created_contact.updated_at = created_contact_response_body.updated_at
         contacts << created_contact
         form_contact.reset
         form_contact.errors = nil
@@ -42,11 +37,8 @@ class ContactPresenter
   end
   
   def update_contact
-    Rails::ResourceService.update(resource: form_contact) do |response|
+    Rails::ResourceService.update(resource: form_contact) do |response, updated_contact|
       if response.ok?
-        updated_contact_response_body = Native(response.body)
-        updated_contact = form_contact.clone
-        updated_contact.updated_at = updated_contact_response_body.updated_at
         contacts[edit_index].load_with(updated_contact)
         self.edit_index = nil
         form_contact.reset
