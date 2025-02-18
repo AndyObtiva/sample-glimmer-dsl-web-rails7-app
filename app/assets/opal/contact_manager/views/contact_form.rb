@@ -78,7 +78,7 @@ class ContactForm
     r('form.contact-form div.attribute-group') {
       display :inline
       float :left
-      margin 10
+      margin 5
     }
     
     r('form.contact-form div.attribute') {
