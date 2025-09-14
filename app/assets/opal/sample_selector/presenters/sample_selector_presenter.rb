@@ -13,6 +13,7 @@ class SampleSelectorPresenter
     'hello_component_slots' => 'Hello, Component Slots!',
     'hello_component_listeners' => 'Hello, Component Listeners!',
     'hello_component_attribute_listeners' => 'Hello, Component Attribute Listeners!',
+    'hello_component_attribute_data_binding' => 'Hello, Component Attribute Data-Binding!',
     'hello_component_listeners_default_slot' => 'Hello, Component Listeners (Default Slot)!',
     'hello_paragraph' => 'Hello, Paragraph!',
     'hello_input_date_time' => 'Hello, Input Date/Time!',
