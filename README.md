@@ -9,7 +9,7 @@ https://sample-glimmer-dsl-web-rails7-app-black-sound-6793.fly.dev/
 
 ## Setup Instructions
 
-Note that you need Ruby 3.2.2 to run this project.
+This project has been verified to work on Ruby 4.
 
 This is a standard Rails app. As such, you may setup locally by cloning the repository and running the following commands from inside the app directory:
 - `bundle`

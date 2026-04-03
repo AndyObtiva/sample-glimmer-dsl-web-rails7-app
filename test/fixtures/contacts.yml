@@ -1,21 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
-  street: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
+  first_name: Ada
+  last_name: Lovelace
+  email: ada@example.com
+  phone: 555-111-2222
+  street: 12 Analytical Engine Way
+  city: London
+  state: CA
+  zip: 94105
 
 two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
-  street: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
+  first_name: Grace
+  last_name: Hopper
+  email: grace@example.com
+  phone: 555-333-4444
+  street: 44 Compiler Lane
+  city: Arlington
+  state: VA
+  zip: 22201
