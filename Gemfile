@@ -1,13 +1,11 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.2"
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.1"
+gem "rails", "~> 8.1.3"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# Asset pipeline for modern Rails apps [https://github.com/rails/propshaft]
+gem "propshaft"
 
 # Enable if you want to use PostgreSQL in Production
 group :production do
@@ -15,12 +13,12 @@ group :production do
 end
 
 # Use sqlite3 as the database for Active Record
-group :development do
-  gem "sqlite3", "~> 1.4"
+group :development, :test do
+  gem "sqlite3", "~> 2.1"
 end
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -33,6 +31,8 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem "minitest", "< 6"
+gem "ostruct"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -44,7 +44,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -58,10 +58,11 @@ gem "bootsnap", require: false
 gem 'puts_debuggerer', '~> 1.0.1' # (Optional)
 
 gem 'glimmer-dsl-web', '~> 0.8.3' #, path: '../glimmer-dsl-web'
+gem 'opal-rails', github: 'hmdne/opal-rails', branch: 'hmdne/drop-sprockets-and-modernize'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[ mri windows ]
 end
 
 group :development do

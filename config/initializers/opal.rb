@@ -19,4 +19,9 @@ Rails.application.configure do
   #   - :ivars  # only instance variables
   #
   config.opal.assigns_in_templates = false
+
+  config.opal.source_path = Rails.root.join('app/assets/opal')
+  config.opal.entrypoints_path = config.opal.source_path
+  config.opal.entrypoints = :all
+  config.opal.use_gems = %w[puts_debuggerer glimmer-dsl-web]
 end
