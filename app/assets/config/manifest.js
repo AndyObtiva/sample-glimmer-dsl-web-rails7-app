@@ -2,4 +2,5 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../../javascript .js
-//= link_directory ../opal .js
+//= link_directory ../builds .js
+//= link_directory ../builds .map
