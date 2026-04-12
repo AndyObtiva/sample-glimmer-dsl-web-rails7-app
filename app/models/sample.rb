@@ -33,11 +33,8 @@ class Sample
     first_non_comment_found = false
     new_code = ''
     @code.lines.each do |line|
-      if first_non_comment_found
-        new_code += line
-      elsif !line.start_with?('#')
-        first_non_comment_found = true
-      end
+      first_non_comment_found ||= true if !line.start_with?('#')
+      new_code += line if first_non_comment_found
     end
     @code = new_code
   end
