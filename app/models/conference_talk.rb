@@ -1,0 +1,2 @@
+class ConferenceTalk < ApplicationRecord
+end

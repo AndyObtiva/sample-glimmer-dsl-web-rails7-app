@@ -41,6 +41,21 @@ class SamplesTable
         tr {
           # handle this sample differently via links to demonstrate visiting outside pages
           td {
+            span('Hello, Page Component Link!')
+            span(' ( ')
+            a('Run', "data-turbo": "false", href: '/conference_talks')
+            span(' | ')
+            a('Code',
+              target: '_blank',
+              href: 'https://github.com/AndyObtiva/glimmer-dsl-web/blob/master/glimmer-dsl-web/lib/glimmer-dsl-web/samples/hello/hello_page_component_link/conference_talks_page.rb'
+            )
+            span(' ) ')
+          }
+        }
+        
+        tr {
+          # handle this sample differently via links to demonstrate visiting outside pages
+          td {
             span('Contact Manager')
             span(' ( ')
             a('Run', "data-turbo": "false", href: '/contacts')

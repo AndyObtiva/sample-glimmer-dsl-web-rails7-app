@@ -118,6 +118,12 @@ class Sample
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_form_mvp.rb'
       end
+    when 'hello_modal'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_modal.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_modal.rb'
+      end
     when 'hello_style'
       begin
         load 'glimmer-dsl-web/samples/hello/hello_style.rb'
