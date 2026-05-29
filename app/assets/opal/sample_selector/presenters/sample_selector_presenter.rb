@@ -17,6 +17,7 @@ class SampleSelectorPresenter
     'hello_component_listeners_default_slot' => 'Hello, Component Listeners (Default Slot)!',
     'hello_paragraph' => 'Hello, Paragraph!',
     'hello_input_date_time' => 'Hello, Input Date/Time!',
+    'hello_input_date_time_data_binding' => 'Hello, Input Date/Time Data-Binding!',
     'hello_form_mvp' => 'Hello, Form (MVP)!',
     'hello_modal' => 'Hello, Modal!',
     'hello_style' => 'Hello, Style!',

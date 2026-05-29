@@ -112,6 +112,12 @@ class Sample
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
       end
+    when 'hello_input_date_time_data_binding'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_input_date_time_data_binding.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_input_date_time_data_binding.rb'
+      end
     when 'hello_form_mvp'
       begin
         load 'glimmer-dsl-web/samples/hello/hello_form_mvp.rb'
