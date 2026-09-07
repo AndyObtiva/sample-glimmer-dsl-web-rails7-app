@@ -108,17 +108,17 @@ GEM
     drb (2.2.3)
     erubi (1.13.1)
     facets (3.1.0)
-    glimmer (2.8.2)
+    glimmer (2.8.3)
       array_include_methods (>= 1.4.0, < 1.6.0)
       facets (= 3.1.0)
     glimmer-dsl-css (1.5.2)
       css_parser (>= 1.0.0, < 2.0.0)
       glimmer (>= 2.0.0, < 3.0.0)
-    glimmer-dsl-web (0.9.1)
-      glimmer (~> 2.8.2)
+    glimmer-dsl-web (0.10.4)
+      glimmer (~> 2.8.3)
       glimmer-dsl-css (~> 1.5.2)
       glimmer-dsl-xml (~> 1.4.0)
-      opal (= 1.8.2)
+      opal (>= 1.8.2, < 2.0.0)
       opal-async (~> 1.4.1)
       opal-jquery (~> 0.5.2)
       opal-rails (>= 2.0.4, < 4.0.0)
@@ -306,7 +306,7 @@ DEPENDENCIES
   capybara
   debug
   dockerfile-rails (>= 1.6)
-  glimmer-dsl-web (~> 0.9.1)
+  glimmer-dsl-web (~> 0.10.4)
   importmap-rails
   jbuilder
   pg (~> 1.5)

@@ -71,7 +71,12 @@ class SamplesTable
         
       style {
         r('table.samples') {
+          border '1px solid rgb(209, 215, 222)'
           border_spacing 0
+          height 'calc(75vh + 2px)'
+          overflow :scroll
+          display :block
+          width 'calc-size(max-content, size - 25px)'
         }
         
         r('table.samples tr td') {

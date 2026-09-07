@@ -20,7 +20,7 @@ class HighlightedCode
         r('div.code-scrollable-container') {
           overflow 'scroll'
           width 'calc(100vw - 410px)'
-          height '80vh'
+          height '75vh'
           border '1px solid rgb(209, 215, 222)'
           padding '0'
         }

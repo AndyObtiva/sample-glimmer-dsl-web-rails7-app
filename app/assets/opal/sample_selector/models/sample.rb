@@ -100,6 +100,18 @@ class Sample
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_component_attribute_data_binding.rb'
       end
+    when 'hello_mutation'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_mutation.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_mutation.rb'
+      end
+    when 'hello_mutation_content_data_binding'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_mutation_content_data_binding.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_mutation_content_data_binding.rb'
+      end
     when 'hello_paragraph'
       begin
         load 'glimmer-dsl-web/samples/hello/hello_paragraph.rb'
@@ -111,6 +123,12 @@ class Sample
         load 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
       rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
         require 'glimmer-dsl-web/samples/hello/hello_input_date_time.rb'
+      end
+    when 'hello_input_date_time_data_binding'
+      begin
+        load 'glimmer-dsl-web/samples/hello/hello_input_date_time_data_binding.rb'
+      rescue LoadError # the first time a file is loaded, it raises LoadError and must be required instead
+        require 'glimmer-dsl-web/samples/hello/hello_input_date_time_data_binding.rb'
       end
     when 'hello_form_mvp'
       begin
